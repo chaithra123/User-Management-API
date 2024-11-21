@@ -1,0 +1,55 @@
+openapi: 3.0.3
+info:
+  title: User Management API
+  description: A simple REST API to manage users, integrated with Kong Gateway and hosted on Azure App Service.
+  version: 1.0.0
+servers:
+  - url: http://localhost:8000/api
+    description: Local Kong Gateway endpoint
+  - url: https://<your-app-name>.azurewebsites.net
+    description: Azure-hosted backend service
+paths:
+  /users:
+    get:
+      summary: Retrieve all users
+      description: Fetches a list of all users currently in the system.
+      responses:
+        '200':
+          description: A list of users
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/User'
+    post:
+      summary: Add a new user
+      description: Adds a new user to the system.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+      responses:
+        '201':
+          description: User created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '400':
+          description: Invalid input
+components:
+  schemas:
+    User:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the user
+          example: "1"
+        name:
+          type: string
+          description: Full name of the user
+          example: "Alice"
