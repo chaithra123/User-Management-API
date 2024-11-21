@@ -46,3 +46,37 @@ The **Kong Gateway** handles:
 3. **Run the Backend:**
 ``` bash
  ./mvnw spring-boot:run
+```
+
+
+4. **Folder Structure**
+``` bash
+User-Management-API/
+├── src/
+│   ├── main/
+│   │   ├── java/
+│   │   │   └── com/
+│   │   │       └── example/
+│   │   │           └── usermanagement/
+│   │   │               ├── Application.java         # Spring Boot main application class
+│   │   │               ├── UserController.java      # REST controller for APIs
+│   │   │               └── User.java                # User entity/model
+│   │   └── resources/
+│   │       ├── application.properties               # Spring Boot configuration
+│   │       └── static/                              # Static files (if needed)
+│   │       └── templates/                           # HTML templates (for Thymeleaf, etc.)
+├── src/
+│   ├── test/
+│   │   └── java/
+│   │       └── com/
+│   │           └── example/
+│   │               └── usermanagement/
+│   │                   └── UserControllerTest.java  # Unit tests for UserController
+├── pom.xml                                           # Maven configuration file
+├── openapi.yaml                                      # OpenAPI specification
+├── README.md                                         # Project documentation
+└── .gitignore                                        # Git ignored files
+
+```
+
+
